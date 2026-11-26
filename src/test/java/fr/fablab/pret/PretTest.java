@@ -14,7 +14,7 @@ class PretTest {
 
     @Test
     void un_pret_de_7_jours_est_a_rendre_une_semaine_plus_tard() {
-        Pret pret = Pret.creer("ADH-042", "IMP-3D-01", LUNDI, 7);
+        Pret pret = Pret.creer("ADH-042", "IMP-3D-01", null, 7);
 
         assertThat(pret.getRetourPrevu()).isEqualTo(LocalDate.of(2026, 11, 30));
         assertThat(pret.estEnCours()).isTrue();
