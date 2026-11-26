@@ -1,0 +1,23 @@
+name: FabLab CI
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Récupérer le code source
+        uses: actions/checkout@v4.0.0
+
+      - name: Installer le JDK Java
+        uses: actions/setup-java@v4.0.0
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+          cache: 'maven'
+
+      - name: Compiler et exécuter les tests avec Maven
+        run: mvn -B package --file pom.xml
